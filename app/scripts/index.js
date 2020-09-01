@@ -9,9 +9,21 @@ const getNotes = () => {
     .then(res => res.json())
     .then(data => {
       data.forEach(element => {
+        let div = document.createElement('div')
+        div.id = element.id + 'div'
+        document.body.appendChild(div)
+        let box = document.getElementById(element.id + 'div')
         let p = document.createElement('p')
         p.textContent = element.text
-        document.body.appendChild(p)
+        let trash = document.createElement('button')
+        trash.textContent = 'Delete'
+        trash.id = element.id
+        box.appendChild(p)
+        box.appendChild(trash)
+        trash.addEventListener('click', () => {
+          removeNote(trash.id)
+          location.reload()
+        })
       })
     })
     .catch(() => console.log('ERROR'))
@@ -43,3 +55,13 @@ submitButton.addEventListener('click', () => {
   addNotes(post)
   location.reload()
 })
+
+const removeNote = id => {
+  const options = {
+    method: 'DELETE'
+  }
+  return fetch('http://localhost:4000/notes/delete/' + id, options)
+    .then(res => res.json)
+    .then(res => console.log(res))
+    .catch(() => console.log('ERROR'))
+}
