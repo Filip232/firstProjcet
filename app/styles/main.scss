@@ -1,6 +1,52 @@
 @import 'fonts';
 
 body {
+  margin: 0;
   font-family: 'Open Sans', sans-serif;
+  background-color: #e9d708;
+  color: black;
+}
+
+header {
+  margin: 0 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: cornflowerblue;
+}
+
+h1 {
+  font-size: 40px;
+  padding: 10px;
+  margin: 0;
+}
+
+.js-logo {
+  width: 80px;
+  padding: 10px;
+}
+
+input[type=text] {
+  margin: 10px 0 10px 10px;
+  padding: 0 5px;
+  height: 40px;
+  border: none;
+  border-radius: 30px 0 0 30px;
+  font: inherit;
+}
+
+input[type=submit] {
+  padding: 0 5px;
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 0 30px 30px 0;
+  box-sizing: unset;
+  font: inherit;
+  background-color: cornflowerblue;
+  color: black;
+}
+
+p {
+  margin: 5px 10px;
 }
