@@ -74,9 +74,9 @@ const commonConfig = merge([
       modules: false
     },
     plugins: [
-      new HtmlPlugin({
-        template: './index.pug'
-      }),
+      //new HtmlPlugin({
+      //  template: './index.pug'
+      //}),
       new FriendlyErrorsPlugin(),
       new StylelintPlugin(lintStylesOptions)
     ],
@@ -204,12 +204,36 @@ const developmentConfig = merge([
   parts.loadJS({ include: paths.app })
 ])
 
+const pages = [
+  parts.page({
+    title: 'Home',
+    entry: {
+      home: paths.app
+    },
+    template: path.join(paths.app, 'index.pug'),
+
+    // An array of chunks to include in the page
+    chunks: ['home', 'runtime', 'vendors']
+  }),
+  parts.page({
+    title: 'Details',
+    path: 'details',
+    entry: {
+      details: path.join(paths.app, 'details')
+    },
+    template: path.join(paths.app, 'details/details.pug'),
+
+    chunks: ['details', 'runtime', 'vendors']
+  })
+]
+
 module.exports = env => {
   process.env.NODE_ENV = env
 
   return merge(
     commonConfig,
-    env === 'production' ? productionConfig : developmentConfig
+    env === 'production' ? productionConfig : developmentConfig,
+    ...pages
   )
 }
 
@@ -236,3 +260,4 @@ function getPaths ({
     staticDir
   })
 }
+
