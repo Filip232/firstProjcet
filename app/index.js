@@ -20,6 +20,9 @@ const getNotes = () => {
         trash.setAttribute('data-Id', element.id)
         box.appendChild(p)
         box.appendChild(trash)
+        trash.setAttribute('class', 'btntrash')
+        p.setAttribute('class', 'message')
+        div.setAttribute('class', 'messagebox')
         trash.addEventListener('click', () => {
           removeNote(trash.getAttribute('data-Id'))
           location.reload()
