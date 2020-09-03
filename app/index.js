@@ -29,6 +29,9 @@ const getNotes = () => {
         let checkboxbutton = document.createElement('button')
         checkboxbutton.setAttribute('class', 'checkbox')
         box.appendChild(checkboxbutton)
+        trash.setAttribute('class', 'btntrash')
+        p.setAttribute('class', 'message')
+        div.setAttribute('class', 'messagebox')
         trash.addEventListener('click', () => {
           removeNote(trash.getAttribute('data-Id'))
           location.reload()
